@@ -1,0 +1,38 @@
+{
+  "name": "youtube-video-id-fetcher",
+  "version": "0.0.1",
+  "description": "A small module to fetch the youtube id, given any url to take into consideration",
+  "main": "dist/index.js",
+  "scripts": {
+    "compile": "babel --no-babelrc --presets=env src --out-dir dist --plugins=add-module-exports",
+    "prepublish": "npm run compile",
+    "prepare": "npm run compile",
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aajiwani/youtube-video-id-fetcher.git"
+  },
+  "keywords": [
+    "youtube",
+    "video",
+    "id",
+    "fetcher",
+    "short",
+    "urls"
+  ],
+  "author": "Amir Ali Jiwani <amirali.jiwani89@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aajiwani/youtube-video-id-fetcher/issues"
+  },
+  "homepage": "https://github.com/aajiwani/youtube-video-id-fetcher#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.7.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
