@@ -7,7 +7,7 @@
     "compile": "babel --no-babelrc --presets=env src --out-dir dist --plugins=add-module-exports",
     "prepublish": "npm run compile",
     "prepare": "npm run compile",
-    "test": "exit 0"
+    "test": "find ./tests -name '*spec.js' | xargs nyc --reporter=html --reporter=text mocha -R spec --require babel-core/register"
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,10 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "nyc": "^11.8.0"
   },
   "dependencies": {
     "axios": "^0.18.0"

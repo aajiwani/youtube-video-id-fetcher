@@ -7,10 +7,9 @@ import _ from "lodash";
  * @param {string} youtubeUrl The real youtube URL
  */
 function extractYoutubeVideoId(youtubeUrl) {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    //^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?\s]*).*
+    var regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?\s]*).*/;
     var match = youtubeUrl.match(regExp);
-    return (match && match[7].length == 11) ? match[7] : false;
+    return (match && match[2]) ? match[2] : false;
 }
 
 /**
@@ -30,19 +29,10 @@ export function fetchYoutubeId(youtubeUrl) {
         url: youtubeUrl,
         cache: "no-cache"
     }).then(response => {
-        //console.log(response);
-        // console.log(response.request.res);
-        // console.log(response.request);
-        let pureURL = response.request.res.req.agent.protocol + "//" + response.request.res.connection._host + response.request.path;
-
-        console.log(
-            pureURL
-        );
-        console.log(
-            extractYoutubeVideoId(pureURL)
-        );
-
-        // console.log(response.request.res.client);
-        // .IncomingMessage.responseUrl
+        if (response.status === 200) {
+            let pureURL = response.request.res.req.agent.protocol + "//" + response.request.res.connection._host + response.request.path;
+            return extractYoutubeVideoId(pureURL);
+        }
+        return false;
     })
 }
