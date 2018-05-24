@@ -24,15 +24,16 @@ function extractYoutubeVideoId(youtubeUrl) {
  * http://www.youtube.com/watch?v=0zM3nApSvMg
  */
 export function fetchYoutubeId(youtubeUrl) {
-    return axios({
-        method: "HEAD",
-        url: youtubeUrl,
-        cache: "no-cache"
-    }).then(response => {
-        if (response.status === 200) {
-            let pureURL = response.request.res.req.agent.protocol + "//" + response.request.res.connection._host + response.request.path;
-            return extractYoutubeVideoId(pureURL);
-        }
-        return false;
-    })
+    if (_.includes(youtubeUrl, "youtube.com")) {
+        return Promise.resolve(extractYoutubeVideoId(youtubeUrl));
+    }
+    else {
+        return axios.head(youtubeUrl).then(response => {
+            if (response.status === 200) {
+                let pureURL = response.request.res.req.agent.protocol + "//" + response.request.res.connection._host + response.request.path;
+                return extractYoutubeVideoId(pureURL);
+            }
+            return false;
+        });
+    }
 }

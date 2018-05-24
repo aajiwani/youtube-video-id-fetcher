@@ -7,7 +7,11 @@
     "compile": "babel --no-babelrc --presets=env src --out-dir dist --plugins=add-module-exports",
     "prepublish": "npm run compile",
     "prepare": "npm run compile",
-    "test": "find ./tests -name '*spec.js' | xargs nyc --reporter=html --reporter=text mocha -R spec --require babel-core/register"
+    "test": "find ./tests -name '*spec.js' | xargs nyc --reporter=html --reporter=text mocha -R spec --require babel-core/register",
+    "coveralls":
+      "find ./tests -name '*spec.js' | xargs nyc --reporter=text-lcov mocha -R spec --require babel-core/register | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "ci_tests":
+      "find ./tests -name '*spec.js' | xargs nyc --reporter=text mocha -R spec --require babel-core/register"
   },
   "repository": {
     "type": "git",
@@ -33,9 +37,11 @@
     "babel-preset-env": "^1.7.0",
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
-    "nyc": "^11.8.0"
+    "nyc": "^11.8.0",
+    "sinon": "^5.0.7"
   },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "lodash": "^4.17.10"
   }
 }
