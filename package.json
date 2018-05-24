@@ -8,10 +8,8 @@
     "prepublish": "npm run compile",
     "prepare": "npm run compile",
     "test": "find ./tests -name '*spec.js' | xargs nyc --reporter=html --reporter=text mocha -R spec --require babel-core/register",
-    "coveralls":
-      "find ./tests -name '*spec.js' | xargs nyc --reporter=text-lcov mocha -R spec --require babel-core/register | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "ci_tests":
-      "find ./tests -name '*spec.js' | xargs nyc --reporter=text mocha -R spec --require babel-core/register"
+    "coveralls": "find ./tests -name '*spec.js' | xargs nyc --reporter=text-lcov mocha -R spec --require babel-core/register | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "ci_tests": "find ./tests -name '*spec.js' | xargs nyc --reporter=text mocha -R spec --require babel-core/register"
   },
   "repository": {
     "type": "git",
@@ -42,6 +40,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "coveralls": "^3.0.1",
     "lodash": "^4.17.10"
   }
 }
