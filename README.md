@@ -13,7 +13,6 @@ This package can get the Youtube video ID from youtube URL directly, or from the
 1.  Install Dependencies `yarn install`
 2.  Run Tests `yarn test`
     * After running tests, an interactive report could be found under coverage/index.html
-3.  Run Interactive Mode `yarn start`
 
 ## Dependencies
 
@@ -22,3 +21,19 @@ This package can get the Youtube video ID from youtube URL directly, or from the
 1.  `find`
 2.  `xargs`
 3.  `cd`
+
+## Test Cases
+* Please check the test cases for the covered URLs
+
+## Basic Usage
+```
+import { fetchYoutubeId } from "youtube-video-id-fetcher";
+```
+
+```
+fetchYoutubeId(
+    "http://y2u.be/j4dMnAPZu70"
+).then(youtubeId => console.log(youtubeId));
+
+// This will print out j4dMnAPZu70
+```
