@@ -1,6 +1,6 @@
 {
   "name": "youtube-video-id-fetcher",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A small module to fetch the youtube id, given any url to take into consideration",
   "main": "dist/index.js",
   "scripts": {
